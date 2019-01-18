@@ -31,6 +31,11 @@ public class TestGarage {
         myGarage.parkVehicle(1,myVehicle2);
 
         assertEquals(1,myGarage.getNumberOfCarsWithValueOver(1000));
+
+    }
+
+    public void moveVehicle (){
+
     }
 
 

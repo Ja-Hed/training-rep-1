@@ -16,6 +16,7 @@ public class Garage {
     public Vehicle checkVehicle(int place){
         return vehicles[place];
     }
+
     public int getNumberOfCarsWithValueOver(int price){
         int numbersOfCars = 0;
 
@@ -24,6 +25,7 @@ public class Garage {
             if (vehicles[i] != null && vehicles[i].getPrice() > price) {
                 numbersOfCars++;
             }
+            //System.out.println(Arrays.toString(vehicles));
         }
 
         return numbersOfCars;
