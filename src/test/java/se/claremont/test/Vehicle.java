@@ -34,5 +34,14 @@ public class Vehicle { //about what this class describes. Always big first lette
         this.price = Price;
     }
 
+    public String getMake(){
+        return make;
+    }
+    public String getModel(){
+        return model;
+    }
+    public Vehicle(){
+
+    }
 
 }

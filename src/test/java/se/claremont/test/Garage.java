@@ -1,6 +1,9 @@
 package se.claremont.test;
 
 import java.util.Arrays;
+import java.util.List;
+
+import static sun.rmi.transport.TransportConstants.Return;
 
 public class Garage {
 
@@ -16,7 +19,7 @@ public class Garage {
     public Vehicle checkVehicle(int place){
         return vehicles[place];
     }
-
+/*
     public int getNumberOfCarsWithValueOver(int price){
         int numbersOfCars = 0;
 
@@ -31,6 +34,27 @@ public class Garage {
         return numbersOfCars;
     }
 
-}
+    public int getNumberOfCarsWithValueOver (int price){
+        int numverOfCars = 0;
+        List<Vehicle> apa = Arrays.asList(vehicles);
+
+        Return (int)apa.stream()
+                .filter(vehicle -> vehicle !=null)
+                .filter(vehicle -> vehicle.getPrice() > price)
+                .count();
+    }
+    public Vehicle getMostExpensiveVehicle(){
+
+        Arrays.stream(vehicles)
+                .filter(vehicle -> vehicle != null)
+                .max((vehicle1, vehicle2) -> vehicle1.getPrice() - vehicle2.getPrice())
+                .orElseThrow(() -> new RuntimeException("No vehicle found"));
+        //.orElse(t:null);
+        }
+
+    }
+
+*/
 //if (vehicles[0] != null && vehicles[0].getPrice() > 1000){
 //            numbersOfCars++;
+}

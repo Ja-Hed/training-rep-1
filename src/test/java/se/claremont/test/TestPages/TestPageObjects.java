@@ -1,4 +1,4 @@
-package se.claremont.test;
+package se.claremont.test.TestPages;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,13 +14,13 @@ import java.util.concurrent.TimeUnit;
 public class TestPageObjects {
 
     WebDriver browser; //validate it outside of the method to make it available and share it among tests
-    By repositoriesLinkIdentifier = By.cssSelector("#js-pjax-container > div > div.col-9.float-left.pl-2 > div.UnderlineNav.user-profile-nav.js-sticky.top-0 > nav > a:nth-child(2)");
     By firstRepoIdentifier = By.cssSelector("#js-pjax-container > div > div.col-9.float-left.pl-2 > div.position-relative > div:nth-child(1) > div > ol > li:nth-child(1) > span > span > a");
 
     @Before
     public void setUp(){
         browser = new ChromeDriver();
         browser.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        browser.get("https://github.com/Jacob-Hedman");
     }
     @After
     public void closeDown(){
@@ -28,14 +28,20 @@ public class TestPageObjects {
     }
     @Test
     public void simplePageObjectTest() throws InterruptedException {
-        browser.get("https://github.com/Jacob-Hedman");
+        //new UserRepoMenu(browser).showRepositoryListPage(); //Open the class UserRepoMenu and then from that, use showRepositoryListPage
 
-        WebElement repositoriesLink = browser.findElement(repositoriesLinkIdentifier);
-        repositoriesLink.click();
+        UserRepoMenu menu = new UserRepoMenu(browser); //declare page
 
-        WebElement firstRepo = browser.findElement(firstRepoIdentifier);
+        //menu.showRepositoryListPage(); //User method from the declared page/class
+
+        RepoListPage listPage = menu.showRepositoryListPage();
+
+        //RepoListPage listPage = new UserRepoMenu(browser).showRepositoryListPage(); //refractoring to much
+
         Assert.assertEquals(
-                "hello-world",firstRepo.getText()
+                "Checking name of the first Repo is...",
+                "hello-world",
+                listPage.getNameOfFirstRepo()
         );
 
     }
