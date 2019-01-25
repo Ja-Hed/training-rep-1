@@ -27,7 +27,7 @@ public class PetStoreClient {
 
         ObjectMapper mapper = new ObjectMapper();
         Pet myPet = mapper.readValue(response.getBody(), Pet.class);
-        
+
         return myPet;
     }
 }

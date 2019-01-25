@@ -63,4 +63,23 @@ public class PetStoreTest {
         Pet newPet = new PetStoreClient().getPetbyId(123);
         Assert.assertEquals("Rinoh",newPet.getName());
     }
+
+
+    //CLEANING UP THE CODE ABOVE
+
+    @Test
+    public void putPetInPetStoreClean() throws UnirestException, JsonProcessingException { //
+        Pet myPet = TestDataHelper.getPetWithIdAndName(123,"Rinoh");
+        PetStoreClient restClient = new PetStoreClient();
+    }
+
+    @Test
+    public void gettingPetClean() throws UnirestException, IOException {
+        Pet myPet = TestDataHelper.getPetWithIdAndName(123,"Rinoh");
+
+        new PetStoreClient().putPetInPetStore(myPet);
+
+        Pet newPet = new PetStoreClient().getPetbyId(123);
+        Assert.assertEquals("Rinoh",newPet.getName());
+    }
 }
